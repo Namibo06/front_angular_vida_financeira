@@ -7,9 +7,13 @@ import { RegisterModule } from './pages/register/register.module';
 import { LoginModule } from './pages/login/login.module';
 import { HomeModule } from './pages/home/home.module';
 import { PerfilModule } from './pages/perfil/perfil.module';
-import { LifeFinancialModule } from './pages/life-financial/life-financial.module';
+import { LifeFinancialModule } from './pages/life_financial/life_financial.module';
 import { FinancialModule } from './pages/financial/financial.module';
 import { GoalsModule } from './pages/goals/goals.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReportsModule } from './pages/reports/reports.module';
+import { GraphicsModule } from './pages/graphics/graphics.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { GoalsModule } from './pages/goals/goals.module';
     PerfilModule,
     LifeFinancialModule,
     FinancialModule,
-    GoalsModule
+    GoalsModule,
+    FontAwesomeModule,
+    ReportsModule,
+    GraphicsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,233 @@
+@use '../../life_financial/life-financial/header.component.scss' as header;
+
+main{
+    @include header.display_flex_column();
+
+    .goals__wrapper{
+        @include header.display_flex_column();
+        padding: 80px 80px 40px 80px;
+
+        .goals__single{
+            @include header.display_flex_row();
+            justify-content: space-between;
+            margin-bottom: 50px;
+            align-items: flex-start;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+
+            .goals__single__title{
+                h3{
+                    width: 250px; 
+                    max-width: 250px; 
+                    white-space: nowrap;
+                }
+            }
+
+            .goals__single__steps{
+                position: relative;
+                bottom: 3px;
+                @include header.display_flex_row();
+
+                div{
+                    @include header.display_flex_row();
+                    align-items: center;
+
+                    div{
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 3px;
+                        border: 1px solid #333;
+                        cursor: pointer;
+                    }
+
+                    h4{
+                        margin: 0 15px 0 5px;
+                        font-size: 16px;
+                        font-weight: 400;
+                    }
+                }
+            }
+
+            .goals__single__percent{
+                width: 60px;
+
+                h3{
+                    border-left: 2px solid header.$colorBlueLight;
+                    padding-left: 5px;
+                    text-align: right;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    form.add_new_goal{
+        margin: 60px auto;
+
+        button{
+            color: #f5f5f5;
+            background-color: header.$colorBlueLight;
+            width: 200px;
+            height: 45px;
+            border: 0;
+            border-radius: 7px;
+            font-weight: bold;
+            letter-spacing: 7%;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease-in;
+
+            &:hover{
+                background-color: header.$colorBlueLightHover;
+            }
+
+            &:active{
+                position: relative;
+                top: 1px;
+            }
+        }
+    }
+}
+
+@media (width < 1100px) {
+    main{
+        .goals__wrapper{
+            padding: 80px 20px 40px 20px;
+
+            .goals__single{
+                @include header.display_flex_column();
+                margin-bottom: 80px;
+
+                .goals__single__title{
+                    h3{
+                        width: auto;
+                        max-width: 150px;
+                    }
+                }
+    
+                .goals__single__steps{
+                    position: static;
+                    margin: 30px auto 0 auto;
+
+                    div{
+                        h4{
+                            margin: 0 20px 0 5px;
+                            font-size: 16px;
+                            white-space: nowrap;
+                        }
+                    }
+                }
+
+                .goals__single__percent{
+                    display: flex;
+                    justify-content: flex-end;
+                    width: 100%;
+                    position: relative;
+                    bottom: 85px;
+                }
+            }
+        }
+    }
+}
+
+@media (width < 850px){
+    main{
+        form.add_new_goal{
+            margin: 30px auto 60px auto;
+        }
+    }
+}
+
+@media (width < 630px) {
+    main{
+        .goals__wrapper{
+            padding: 80px 10px 40px 10px;
+
+            .goals__single{
+                margin-bottom: 30px;
+                
+                .goals__single__title{
+                    h3{
+                        width: auto;
+                        max-width: 150px;
+                        font-size: 16px;
+                        font-weight: 400;
+                    }
+                }
+    
+                .goals__single__steps{
+                    display: grid;
+                    grid-template-columns: repeat(2,1fr);
+
+                    div{
+                        margin-bottom: 10px;
+
+                        h4{
+                            margin: -10px 20px 0 5px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+
+                .goals__single__percent{
+                    bottom: 150px;
+
+                    h3{
+                        padding-left: 4px;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+
+        form.add_new_goal{
+            margin: 20px auto 60px auto;
+        }
+    }
+}
+
+@media (width < 380px) {
+    main{
+        .goals__wrapper{
+            .goals__single{
+                .goals__single__title{
+                    h3{
+                        font-size: 14px;
+                    }
+                }
+
+                .goals__single__steps{
+                    display: grid;
+                    grid-template-columns: repeat(2,1fr);
+
+                    div{
+                        div{
+                            width: 20px;
+                            height: 20px;
+                        }
+
+                        h4{
+                            margin: -12px 20px 0 5px;
+                            font-size: 12px;
+                        }
+                    }
+                }
+
+                .goals__single__percent{
+                    bottom: 126px;
+
+                    h3{
+                        padding-left: 5px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        form.add_new_goal{
+            margin: 10px auto 60p auto;
+        }
+    }
+}

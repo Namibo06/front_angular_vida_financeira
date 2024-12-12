@@ -1,0 +1,240 @@
+@use './header.component.scss' as header;
+
+@mixin input_select_default{
+    padding: 0px 15px;
+    outline: 0;
+    width: 250px;
+    max-width: 97%;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: transparent;
+}
+
+@mixin input_select_less_1024{
+    padding: 0px 15px;
+    outline: 0;
+    width: 200px;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: transparent;
+}
+
+@mixin input_select_less_790{
+    padding: 0px 15px;
+    outline: 0;
+    width: 180px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: transparent;
+}
+
+@mixin input_select_less_430{
+    padding: 0px 15px;
+    outline: 0;
+    width: 150px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: transparent;
+}
+
+main{
+    margin: 0px 80px;
+    letter-spacing: 7%;
+
+    section.create_item{
+        padding: 30px 0 100px 0;
+        border-bottom: 3px solid header.$colorBlueLight;
+        border-radius: 2px;
+        @include header.display_flex_column();
+        position: relative;
+
+        h2{
+            font-size: 36px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        form{
+            @include header.display_flex_row();
+            justify-content: space-between;
+            padding: 30px 0;
+
+            div.camp{
+                input{
+                    @include input_select_default();
+                }
+
+                select{
+                    @include input_select_default();
+                }
+            }
+        }
+
+        button{
+            width: 180px;
+            height: 45px;
+            background-color: header.$colorBlueLight;
+            border-radius: 7px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #f5f5f5;
+            letter-spacing: 7%;
+            border: 0;
+            position: absolute;
+            right: 0px;
+            bottom: 40px;
+            cursor: pointer;
+            transition: 0.2s ease-in;
+
+            &:hover{
+                background-color: header.$colorBlueLightHover;
+            }
+
+            &:active{
+                bottom: 39px;
+            }
+        }
+    }   
+}
+
+@media (width < 1024px) {
+    main{
+        section.create_item{
+            h2{
+                font-size: 27px;
+            }
+
+            form{
+                div.camp{
+                    input{
+                        @include input_select_less_1024();
+                    }
+        
+                    select{
+                        @include input_select_less_1024();
+                    }
+                }
+            }
+        }   
+    }
+}
+
+@media (width < 790px) {
+    main{
+        margin: 0px 20px;
+
+        section.create_item{
+            form{
+                div.camp{
+                    input{
+                        @include input_select_less_790();
+                    }
+        
+                    select{
+                        @include input_select_less_790();
+                    }
+                }
+            }
+        }   
+    }
+}
+
+@media (width < 610px) {
+    main{
+        section.create_item{
+            form{
+                div.camp{
+                    &:nth-child(3){
+                        position: absolute;
+                        bottom: 42px;
+                        left: 0px;
+                    }
+                }
+            }
+        }   
+    }
+}
+
+@media (width < 430px){
+    main{
+        margin: 0px 15px;
+
+        section.create_item{
+            h2{
+                font-size: 24px;
+            }
+
+            form{
+                div.camp{
+                    input{
+                        @include input_select_less_430();
+                    }
+        
+                    select{
+                        @include input_select_less_430();
+                    }
+
+                    &:last-child{
+                        bottom: 41px;
+                    }
+                }
+            }
+
+            button{
+                width: 150px;
+                height: 37px;
+            }
+        }   
+    }
+}
+
+@media (width < 365px){
+    main{
+        margin: 0px 10px;
+
+        section.create_item{
+            h2{
+                font-size: 24px;
+            }
+
+            form{
+                padding: 30px 0 0 0;
+                @include header.display_flex_column();
+
+                div.camp{
+                    margin: 0 auto;
+                    width: 250px;
+                    margin-bottom: 20px;
+
+                    &:nth-child(3){
+                        position: relative;
+                        bottom: 0px;
+                        left: 0px;
+                    }
+
+                    input{
+                        @include input_select_default();
+                    }
+        
+                    select{
+                        @include input_select_default();
+                    }
+
+                    &:last-child{
+                        position: relative;
+                        bottom: 0;
+                    }
+                }
+            }
+
+            button{
+                width: 150px;
+                height: 37px;
+            }
+        }   
+    }
+}

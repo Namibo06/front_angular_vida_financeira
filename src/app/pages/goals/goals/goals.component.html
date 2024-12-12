@@ -1,1 +1,168 @@
-<p>goals works!</p>
+<div class="goals__container">
+    <header>
+        <div class="goals_icons_left">
+            <a [routerLink]="['/home']">
+                <button type="button">
+                    <fa-icon [icon]="backPageIcon"></fa-icon>
+                </button>
+            </a>
+
+            <button type="button" class="timeBtn">
+                <fa-icon [icon]="timeIcon"></fa-icon>
+                <p>{{hourActual}}</p>
+            </button>
+        </div><!--goals_icons_left-->
+
+        <div class="title">
+            <h2>Metas</h2>
+        </div><!--title-->
+
+        <div class="goals__icons_right">
+            <button type="button">
+                <fa-icon [icon]="configIcon"></fa-icon>
+            </button>
+        </div><!--goals__icons_right-->
+    </header>
+
+    <main>
+        <form action="">
+            <div class="goals__wrapper">
+                <div class="goals__single">
+                    <div class="goals__single__title">
+                        <h3>Comprar Carro</h3>
+                    </div><!--goals__single__title-->
+
+                    <div class="goals__single__steps">
+                        <div class="goals__single__step__one">
+                            <div class="goals__single__step__one__box"></div>
+                            <h4>pensando</h4>
+                        </div><!--goals__single__step__one-->
+
+                        <div class="goals__single__step__two">
+                            <div class="goals__single__step__two__box"></div>
+                            <h4>primeiro passo</h4>
+                        </div><!--goals__single__step__two-->
+
+                        <div class="goals__single__step__three">
+                            <div class="goals__single__step__three__box"></div>
+                            <h4>em andamento</h4>
+                        </div><!--goals__single__step__three-->
+
+                        <div class="goals__single__step__four">
+                            <div class="goals__single__step__four__box"></div>
+                            <h4>concluido</h4>
+                        </div><!--goals__single__step__four-->
+                    </div><!--goals__single__steps-->
+
+                    <div class="goals__single__percent">
+                        <h3>25%</h3>
+                    </div><!--goals__single__percent-->
+                </div><!--goals__single-->
+
+                <div class="goals__single">
+                    <div class="goals__single__title">
+                        <h3>Comprar Casa</h3>
+                    </div><!--goals__single__title-->
+
+                    <div class="goals__single__steps">
+                        <div class="goals__single__step__one">
+                            <div class="goals__single__step__one__box"></div>
+                            <h4>pensando</h4>
+                        </div><!--goals__single__step__one-->
+
+                        <div class="goals__single__step__two">
+                            <div class="goals__single__step__two__box"></div>
+                            <h4>primeiro passo</h4>
+                        </div><!--goals__single__step__two-->
+
+                        <div class="goals__single__step__three">
+                            <div class="goals__single__step__three__box"></div>
+                            <h4>em andamento</h4>
+                        </div><!--goals__single__step__three-->
+
+                        <div class="goals__single__step__four">
+                            <div class="goals__single__step__four__box"></div>
+                            <h4>concluido</h4>
+                        </div><!--goals__single__step__four-->
+                    </div><!--goals__single__steps-->
+
+                    <div class="goals__single__percent">
+                        <h3>50%</h3>
+                    </div><!--goals__single__percent-->
+                </div><!--goals__single-->
+
+                <div class="goals__single">
+                    <div class="goals__single__title">
+                        <h3>Arranjar Trabalho</h3>
+                    </div><!--goals__single__title-->
+
+                    <div class="goals__single__steps">
+                        <div class="goals__single__step__one">
+                            <div class="goals__single__step__one__box"></div>
+                            <h4>pensando</h4>
+                        </div><!--goals__single__step__one-->
+
+                        <div class="goals__single__step__two">
+                            <div class="goals__single__step__two__box"></div>
+                            <h4>primeiro passo</h4>
+                        </div><!--goals__single__step__two-->
+
+                        <div class="goals__single__step__three">
+                            <div class="goals__single__step__three__box"></div>
+                            <h4>em andamento</h4>
+                        </div><!--goals__single__step__three-->
+
+                        <div class="goals__single__step__four">
+                            <div class="goals__single__step__four__box"></div>
+                            <h4>concluido</h4>
+                        </div><!--goals__single__step__four-->
+                    </div><!--goals__single__steps-->
+
+                    <div class="goals__single__percent">
+                        <h3>75%</h3>
+                    </div><!--goals__single__percent-->
+                </div><!--goals__single-->
+
+                <div class="goals__single">
+                    <div class="goals__single__title">
+                        <h3>Fazer 3 anos de namoro</h3>
+                    </div><!--goals__single__title-->
+
+                    <div class="goals__single__steps">
+                        <div class="goals__single__step__one">
+                            <div class="goals__single__step__one__box"></div>
+                            <h4>pensando</h4>
+                        </div><!--goals__single__step__one-->
+
+                        <div class="goals__single__step__two">
+                            <div class="goals__single__step__two__box"></div>
+                            <h4>primeiro passo</h4>
+                        </div><!--goals__single__step__two-->
+
+                        <div class="goals__single__step__three">
+                            <div class="goals__single__step__three__box"></div>
+                            <h4>em andamento</h4>
+                        </div><!--goals__single__step__three-->
+
+                        <div class="goals__single__step__four">
+                            <div class="goals__single__step__four__box"></div>
+                            <h4>concluido</h4>
+                        </div><!--goals__single__step__four-->
+                    </div><!--goals__single__steps-->
+
+                    <div class="goals__single__percent">
+                        <h3>100%</h3>
+                    </div><!--goals__single__percent-->
+                </div><!--goals__single-->
+
+                <!--
+                    Aqui vou permitir que registre outro single
+                -->
+            </div><!--goals__wrapper-->
+        </form>
+        
+        <form action="" method="post" class="add_new_goal">
+            <button type="button">Adicionar Meta</button>
+        </form>
+    </main>
+</div><!--goals__container-->

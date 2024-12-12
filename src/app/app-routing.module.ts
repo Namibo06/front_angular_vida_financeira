@@ -7,8 +7,14 @@ import { FinancialComponent } from './pages/financial/financial/financial.compon
 import { LifeFinancialComponent } from './pages/life_financial/life-financial/life-financial.component';
 import { GoalsComponent } from './pages/goals/goals/goals.component';
 import { PerfilComponent } from './pages/perfil/perfil/perfil.component';
+import { ReportsComponent } from './pages/reports/reports/reports.component';
+import { GraphicsComponent } from './pages/graphics/graphics/graphics.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: LoginComponent
+  },
   {
     path: 'cadastro',
     component: RegisterComponent
@@ -36,6 +42,18 @@ const routes: Routes = [
   {
     path: 'perfil',
     component: PerfilComponent
+  },
+  {
+    path: 'relatorios',
+    component: ReportsComponent
+  },
+  {
+    path: 'graficos',
+    component: GraphicsComponent
+  },
+  {
+    path: '**',
+    component: LoginComponent
   }
 ];
 

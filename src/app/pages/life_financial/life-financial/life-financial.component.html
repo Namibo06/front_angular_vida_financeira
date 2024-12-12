@@ -1,1 +1,131 @@
-<p>life-financial works!</p>
+<div class="life__financial__container">
+    <header>
+        <div class="header__icons">
+            <div class="header__icons__left">
+                <a [routerLink]="['/home']">
+                    <button type="button">
+                        <fa-icon [icon]="backPageIcon"></fa-icon>
+                    </button>
+                </a>
+
+                <button type="button">
+                    <fa-icon [icon]="timeIcon"></fa-icon>
+                    <p>{{hourActual}}</p>
+                </button>
+            </div><!--header__icons__left-->
+
+            <div class="header__icons__right">
+                <button type="button">
+                    <fa-icon [icon]="configIcon"></fa-icon>
+                </button>
+            </div><!--header__icons__right-->
+        </div><!--header_icons-->
+
+        <div class="header__date">
+            <h3>{{yearActual}}</h3>
+            <h2>{{dayActual}}</h2>
+            <h3>{{monthActual}}</h3>
+        </div><!--header__date-->
+    </header>
+
+    <main>
+        <section class="create_item">
+            <h2>Crie um item</h2>
+
+            <form action="" method="post" (submit)="createItem()">
+                <div class="camp">
+                    <input type="text" name="name" placeholder="Nome" [(ngModel)]="name">
+                </div><!--camp-->
+                
+                <div class="camp">
+                    <select name="operation" id="operation" [(ngModel)]="operation">
+                        <option value="">Operação</option>
+                        <option value="entrada">Entrada</option>
+                        <option value="saida">Saída</option>
+                    </select>
+                </div><!--camp-->
+                
+                <div class="camp" >
+                    <input type="text" name="price" placeholder="Valor" [(ngModel)]="price">
+                </div><!--camp-->
+
+                <button type="submit">Criar</button>
+            </form>
+            
+        </section><!--create_item-->
+
+        <section class="values_items">
+            <table>
+                <thead>
+                    <th>Nome</th>
+                    <th>Operação</th>
+                    <th>Valor</th>
+                </thead>
+
+                <tbody (click)="openModalForUpdate(item)" *ngFor="let item of allItems">
+                    <th>{{item.name}}</th>
+                    <th>{{item.operation}}</th>
+                    <th>{{item.price.toFixed(2)}}</th>
+                    <tr></tr>
+                </tbody>
+            </table>
+        </section><!--values_items-->
+
+        <div class="modal__update__item" *ngIf="openCloseModal">
+            <button type="button" (click)="closeModal()" class="close__modal">
+                <fa-icon [icon]="closeModalIcon"></fa-icon>
+            </button>
+
+            <h2>Atualize um item</h2>
+
+            <form (submit)="updateItem()">
+                <div class="camp">
+                    <input type="text" name="name" placeholder="Nome" [(ngModel)]="selectedItem.name" maxlength="20">
+                </div>
+                
+                <div class="camp">
+                    <select name="operation" [(ngModel)]="selectedItem.operation">
+                        <option value="">Operação</option>
+                        <option value="entrada">Entrada</option>
+                        <option value="saida">Saída</option>
+                    </select>
+                </div>
+                
+                <div class="camp">
+                    <input type="text" name="price" placeholder="Valor" [(ngModel)]="selectedItem.price"  maxlength="10">
+                </div>
+        
+                <div class="buttons">
+                    <button type="button" (click)="removeItem(selectedItem._id)">Excluir</button>
+                    <button type="submit">Atualizar</button>
+                </div><!--buttons-->
+                
+            </form>
+        </div><!--modal__update__item-->
+    </main>
+
+    <footer>
+        <div class="final__wrapper">
+            <div class="final__single">
+                <div class="final__output__values">
+                    <h2>Saídas</h2>
+                    <p>R${{output_value.toFixed(2)}}</p>
+                </div><!--final__output__values-->
+            </div><!--final__single-->
+
+            <div class="final__single">
+                <div class="final__input__values">
+                    <h2>Entradas</h2>
+                    <p>R${{input_value.toFixed(2)}}</p>
+                </div><!--final__input__values-->
+            </div><!--final__single-->
+            
+            <div class="final__single">
+                <div class="final__total__values">
+                    <h2>Saldo</h2>
+                    <p>R${{total_value.toFixed(2)}}</p>
+                </div><!--final__total__values-->
+            </div><!--final__single-->
+        </div><!--final__wrapper-->
+    </footer>
+</div><!--life-financial-container-->

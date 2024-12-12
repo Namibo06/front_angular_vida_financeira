@@ -1,1 +1,13 @@
-<p>login works!</p>
+<div class="login__container">
+    <form action="" (submit)="authenticate()">
+        <div class="camp">
+            <input type="email" name="email" [(ngModel)]="email">
+        </div><!--camp-->
+
+        <div class="camp">
+            <input type="password" name="password" [(ngModel)]="password">
+        </div><!--camp-->
+
+        <button type="submit">Entrar</button>
+    </form>
+</div><!--login__container-->

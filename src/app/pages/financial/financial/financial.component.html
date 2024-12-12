@@ -1,1 +1,53 @@
-<p>financial works!</p>
+<div class="financial__container">
+    <header>
+        <a [routerLink]="['/home']">
+            <button type="button">
+                <fa-icon [icon]="backPageIcon"></fa-icon>
+            </button>
+        </a>
+    
+        <div class="financial__title">
+            <h2>Finanças</h2>
+        </div><!--financial__title-->
+    </header>
+
+    <main>
+        <div class="financial__values">
+            <form action="" method="post">
+                <table border="1">
+                    <thead>
+                        <th>Fundo de Emergência</th>
+                        <th>Investimentos Variáveis</th>
+                        <th>Investimentos Fixos</th>
+                    </thead>
+
+                    <tbody>
+                        <td>R$0.00</td>
+                        <td>R$0.00</td>
+                        <td>R$0.00</td>
+                    </tbody>
+                </table>
+
+                <!--<div class="camp">
+                    <h3>Fundo de Emergência</h3>
+                    <h3>R$0.00</h3>
+                </div>
+
+                <div class="camp">
+                    <h3>Invest. Variáveis</h3>
+                    <h3>R$0.00</h3>
+                </div>
+                
+                <div class="camp">
+                    <h3>Invest. Fixos</h3>
+                    <h3>R$0.00</h3>
+                </div>-->
+            </form>
+
+            <div class="camp_total">
+                <h2>Total</h2>
+                <h2>R$0.00</h2>
+            </div><!--camp-->
+        </div><!--financial__values-->
+    </main>
+</div><!--financial__container-->

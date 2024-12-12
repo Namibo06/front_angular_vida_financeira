@@ -1,0 +1,65 @@
+<div class="graphics__container">
+    <header>
+        <div class="header__icons">
+            <div class="header__icons__left">
+                <a [routerLink]="['/home']">
+                    <button type="button">
+                        <fa-icon [icon]="backPageIcon"></fa-icon>
+                    </button>
+                </a>
+
+                <button type="button">
+                    <fa-icon [icon]="timeIcon"></fa-icon>
+                    <p>{{hourActual}}</p>
+                </button>
+            </div><!--header__icons__left-->
+
+            <div class="header__icons__right">
+                <button type="button">
+                    <fa-icon [icon]="configIcon"></fa-icon>
+                </button>
+            </div><!--header__icons__right-->
+        </div><!--header_icons-->
+    </header>
+
+    <main>
+        <div class="graphics__options">
+            <form action="" method="post">
+                <div class="graphics__options__wrapper">
+                    <label>Tipos:</label>
+                    <select name="graphics__options" id="graphics__options" [(ngModel)]="graphicOption">
+                        <option value="bar">Barra</option>
+                        <option value="line">Linha</option>
+                        <option value="pie">Pizza</option>
+                        <option value="radar">Radar</option>
+                        <option value="polarArea">Área Polar</option>
+                    </select>
+                </div><!--graphics__options__wrapper-->
+                
+                <div class="graphics__date">
+                    <div class="graphics__date_wrapper">
+                        <label>De:</label>
+                        <input type="date" name="" id="">
+                    </div><!--graphics__date_wrapper-->
+
+                    <div class="graphics__date_wrapper">
+                        <label>Até:</label>
+                        <input type="date" name="" id="">
+                    </div><!--graphics__date_wrapper-->
+                </div><!--graphics__date-->
+    
+                <div class="form__buttons">
+                    <button type="submit" (click)="selectGraphicOption()">Buscar</button>
+                    <button type="button" (click)="clearGraphicsInView()">Limpar</button>
+                </div><!--form__buttons-->
+               
+            </form>
+        </div><!--graphics__options-->
+
+        <div class="graphics__chart" *ngIf="showHideGraphics">
+            <canvas id="canvas">{{chart}}</canvas>
+        </div><!--graphics__chart-->
+    </main>
+
+    <p>Poder escolher graficos para metas, financeiro, vida financeira</p>
+</div><!--graphics__container-->

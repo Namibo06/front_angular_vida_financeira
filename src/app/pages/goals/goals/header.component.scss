@@ -1,0 +1,137 @@
+@use '../../life_financial/life-financial/header.component.scss' as header;
+
+header{
+    @include header.display_flex_row();
+    justify-content: space-between;
+    align-items: center;
+
+    .goals_icons_left{
+        @include header.display_flex_row();
+        align-items: center;
+
+        a{
+            button{
+                @include header.button_default();
+                color: header.$colorBlueLight;
+                font-size: 28px;
+                cursor: pointer;
+                transition: 0.3s ease-in;
+
+                &:hover{
+                    color: header.$colorBlueLightHover;
+                }
+
+                &:active{
+                    position: relative;
+                    top: 1px;
+                }
+            }
+        }
+
+        button.timeBtn{
+            @include header.button_default();
+            margin-left: 20px;
+            @include header.display_flex_row();
+            font-size: 16px;
+
+            p{
+                margin-left: 5px;
+            }
+        }
+    }
+
+    .title{
+        h2{
+            font-size: 64px;
+            color: header.$colorBlueLight;
+        }
+    }
+
+    .goals__icons_right{
+        button{
+            @include header.button_default();
+            font-size: 24px;
+            cursor: pointer;
+            color: #222;
+            transition: 0.3s ease-in;
+
+            &:hover{
+                color: #444;
+            }
+
+            &:active{
+                position: relative;
+                top: 1px
+            }
+        }
+    }
+}
+
+@media (width < 630px) {
+    header{
+        margin: 10px;
+
+        .title{
+            h2{
+                font-size: 48px;
+            }
+        }
+    
+        .goals__icons_right{
+            button{
+                @include header.button_default();
+                font-size: 24px;
+                cursor: pointer;
+                color: #222;
+                transition: 0.3s ease-in;
+    
+                &:hover{
+                    color: #444;
+                }
+    
+                &:active{
+                    position: relative;
+                    top: 1px
+                }
+            }
+        }
+    }
+}
+
+@media (width < 480px) {
+    header{
+        .goals_icons_left{
+            a{
+                button{
+                    font-size: 24px;
+                }
+            }
+    
+            button.timeBtn{
+                margin-left: 10px;
+
+                p{
+                    margin-left: 5px;
+                    margin-top: 2px;
+                    font-size: 13px;
+                }
+            }
+        }
+    
+        .title{
+            h2{
+                font-size: 36px;
+                position: relative;
+                top: 30px;
+                left: -30px;
+                text-align: center;
+            }
+        }
+    
+        .goals__icons_right{
+            button{
+                font-size: 21px;
+            }
+        }
+    }
+}

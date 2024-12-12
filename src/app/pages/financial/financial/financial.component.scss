@@ -1,0 +1,245 @@
+@use '../../life_financial/life-financial/header.component.scss' as header;
+
+$colorBgFinancialValues: #333333;
+
+main{
+    padding: 80px 20px 50px 20px;
+
+    .financial__values{
+        @include header.display_flex_column();
+        background-color: $colorBgFinancialValues;
+        color: #f5f5f5;
+        width: 800px;
+        max-width: 98%;
+        height: 380px;
+        padding: 80px 30px;
+        border-radius: 5px;
+        margin: 0 auto;
+
+        form{
+            table{
+                width: 100%;
+
+                thead{
+                    th{
+                        width: 33.33%;
+                        padding-bottom: 35px;
+                        font-size: 21px;
+
+                        &:nth-child(1){text-align: left;}
+                        &:nth-child(3){text-align: right;}
+                    }
+                }
+
+                tbody{
+                    td{
+                        width: 33.33%;
+                        font-size: 18px;
+                        padding-bottom: 80px;
+
+                        &:nth-child(2){text-align: center;}
+                        &:nth-child(3){text-align: right;}
+                    }
+                }
+            }
+        }
+
+        .camp_total{
+            @include header.display_flex_row();
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 30px;
+
+            h2{
+                font-size: 36px;
+                letter-spacing: 7%;
+            }
+        }
+    }
+}
+
+@media (width < 1200px) {
+    main{
+        .financial__values{
+            .camp_total{
+                @include header.display_flex_row();
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+@media (width < 860px) {
+    main{
+        .financial__values{
+            padding: 70px 10px;
+
+            form{
+                table{
+                    width: 100%;
+                    height: 180px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+    
+                    thead{
+                        display: flex;
+                        flex-direction: column;
+                        th{
+                            width: 100%;
+                            padding-bottom: 33px;
+                            font-size: 19px;
+    
+                            &:nth-child(1){text-align: left;}
+                            &:nth-child(3){text-align: left;}
+                        }
+                    }
+    
+                    tbody{
+                        display: flex;
+                        flex-direction: column;
+
+                        td{
+                            width: 100%;
+                            font-size: 16px;
+                            padding-bottom: 33px;
+    
+                            &:nth-child(1){
+                                text-align: right;
+                                position: relative;
+                                top: -5px;
+                            }
+
+                            &:nth-child(2){text-align: right;}
+
+                            &:nth-child(3){
+                                text-align: right;
+                                position: relative;
+                                top: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .camp_total{
+                @include header.display_flex_row();
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 55px;
+    
+                h2{
+                    font-size: 27px;
+                }
+            }
+        }
+    }
+}
+
+@media (width < 550px) {
+    main{
+        padding: 40px 5px 50px 5px;
+
+        .financial__values{
+            padding: 30px 5px;
+            height: 320px;
+
+            form{
+                table{
+                    thead{
+                        th{
+                            font-size: 17px;
+                        }
+                    }
+    
+                    tbody{
+                        td{
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+
+            .camp_total{
+                margin-top: 50px;
+    
+                h2{
+                    font-size: 21px;
+                }
+            }
+        }
+    }
+}
+
+@media (width < 400px) {
+    main{
+        padding: 40px 2px 50px 2px;
+
+        .financial__values{
+            height: 290px;
+            padding: 30px 4px;
+
+            form{
+                table{
+                    thead{
+                        th{
+                            font-size: 15px;
+                        }
+                    }
+    
+                    tbody{
+                        td{
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+
+            .camp_total{
+                margin-top: 30px;
+    
+                h2{
+                    font-size: 19px;
+                }
+            }
+        }
+    }
+}
+
+@media (width < 320px){
+    main{
+        padding: 40px 0px 0px 0px;
+
+        .financial__values{
+            height: 280px;
+            padding: 30px 3px;
+
+            form{
+                table{
+                    thead{
+                        th{
+                            font-size: 12px;
+                        }
+                    }
+    
+                    tbody{
+                        td{
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+
+            .camp_total{
+                margin-top: 20px;
+    
+                h2{
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}

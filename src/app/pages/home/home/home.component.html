@@ -1,1 +1,83 @@
-<p>home works!</p>
+<div class="home__container">
+    <header>
+        <h1>Projeto Financeiro</h1>
+
+        <nav>
+            <ul>
+                <li>Vida Financeira</li>
+                <li>Financeiro</li>
+                <li>Metas</li>
+                <li>Relatórios</li>
+                <li>Gráficos</li>
+            </ul>
+        </nav>
+
+        <div class="home__open__menu__icon">
+            <button type="button">
+                <fa-icon></fa-icon>
+            </button>
+        </div><!--home__open__menu__icon-->
+
+        <menu *ngIf="showHideMenu">
+            <button type="button">
+                <fa-icon></fa-icon>
+            </button>
+
+            <ul>
+                <li>Vida Financeira</li>
+                <li>Financeiro</li>
+                <li>Metas</li>
+                <li>Relatórios</li>
+                <li>Gráficos</li>
+            </ul>
+        </menu>
+    </header>
+
+    <main>
+        <section class="home__life__financial">
+            <a [routerLink]="['/vida-financeira']">Vida Financeira</a>
+        </section><!--home__life__financial-->
+    
+        <section class="home__financial">
+            <a [routerLink]="['/financeiro']">Financeiro</a>
+        </section><!--home__financial-->
+    
+        <section class="home__goals">
+            <a [routerLink]="['/metas']">Metas</a>
+        </section><!--home__goals-->
+    
+        <section class="home__reports">
+            <a [routerLink]="['/relatorios']">Relatórios</a>
+        </section><!--home__reports-->
+    
+        <section class="home__graphics">
+            <a [routerLink]="['/graficos']">Gráficos</a>
+        </section><!--home__graphics-->
+    </main>
+    
+    <footer>
+        <h2>Projeto Financeiro</h2>
+
+        <nav>
+            <div class="footer_services">
+                <ul>
+                    <li><a href="">Cadastro</a></li>
+                    <li><a href="">Iniciar Sessão</a></li>
+                    <li><a href="">Configuração</a></li>
+                    <li><a href="">Politica de Privacidade</a></li>
+                    <li><a href="">Termos de Uso</a></li>
+                </ul>
+            </div><!--footer_services-->
+
+            <div class="footer_services">
+                <li><a href="">Vida Financeira</a></li>
+                <li><a href="">Financeiro</a></li>
+                <li><a href="">Metas</a></li>
+                <li><a href="">Relatórios</a></li>
+                <li><a href="">Gráficos</a></li>
+            </div><!--footer_services-->
+        </nav>
+
+        <h3>© Direitos Reservados ao Projeto Financeiro 2024 - {{yearFinancial}}</h3>
+    </footer>
+</div><!--home__container-->

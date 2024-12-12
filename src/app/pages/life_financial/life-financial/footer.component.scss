@@ -1,0 +1,108 @@
+@use './header.component.scss' as header;
+
+footer{
+    margin: 30px 80px 0 80px;
+    letter-spacing: 7%;
+
+    .final__wrapper{
+        @include header.display_flex_column();
+    
+        .final__single{
+            div{
+                @include header.display_flex_row();
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 18px;
+                
+                h2,p{
+                    font-size: 36px;
+                    font-weight: 400;
+                }
+            }
+
+            &:nth-child(3){
+                div{   
+                    p{
+                        color: #ff0000;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (width < 1024px) {
+    footer{
+        .final__wrapper{
+            .final__single{
+                div{  
+                    h2,p{
+                        font-size: 32px;
+                    }
+                }
+            }
+        }
+    } 
+}
+
+@media (width < 790px) {
+    footer{
+        margin: 30px 20px 0 20px;
+
+        .final__wrapper{
+            .final__single{
+                div{  
+                    h2,p{
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (width < 610px) {
+    footer{
+        .final__wrapper{
+            .final__single{
+                div{  
+                    h2,p{
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+    }  
+}
+
+@media (width < 430px) {
+    footer{
+        margin: 30px 15px 0 15px;
+
+        .final__wrapper{
+            .final__single{
+                div{  
+                    h2,p{
+                        font-size: 21px;
+                    }
+                }
+            }
+        }
+    }  
+}
+
+@media (width < 365px) {
+    footer{
+        margin: 30px 10px 0 10px;
+
+        .final__wrapper{
+            .final__single{
+                div{  
+                    h2,p{
+                        font-size: 17px;
+                    }
+                }
+            }
+        }
+    }  
+}

@@ -1,0 +1,53 @@
+@use '../../life_financial/life-financial/header.component.scss' as header;
+
+.financial__container{
+    header{
+        @include header.display_flex_row();
+        align-items: center;
+        border-bottom: 0;
+        padding: 30px 10px;
+
+        a{
+            button{
+                @include header.button_default();
+                color: header.$colorBlueLight;
+                font-size: 28px;
+                cursor: pointer;
+                transition: 0.3s ease-in;
+
+                &:hover{
+                    color: header.$colorBlueLightHover;
+                }
+                
+
+                &:active{
+                    position: relative;
+                    top: 1px;
+                }
+            }
+        }
+
+        .financial__title{
+            width: 100%;
+            h2{
+                text-align: center;
+                font-size: 48px;
+                color: #333;
+            }
+        }
+    }
+}
+
+@media (width < 380px){
+    .financial__container{
+        header{
+            padding: 30px 0px;
+            
+            .financial__title{
+                h2{
+                    font-size: 36px;
+                }
+            } 
+        }
+    }
+}
