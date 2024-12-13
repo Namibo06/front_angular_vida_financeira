@@ -31,17 +31,19 @@ export class ItemService {
       })
     }
 
+    console.log(userId);
+
     const body = {
       'name': name,
       'operation': operation,
       'price': price,
-      'userId': userId
+      'user': userId
     };
 
     return this.http.post<MessageStatusType>(this.urlCreateItem, body, httpOptions);
   }
 
-  getAllItemsService(token: string | null): Observable<GetAllItemsType>{
+  getAllItemsService(userId: string | null,token: string | null): Observable<GetAllItemsType | MessageStatusType>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':'application/json',
@@ -49,7 +51,7 @@ export class ItemService {
       })
     }
 
-    return this.http.get<GetAllItemsType>(this.urlGetAllItems, httpOptions);
+    return this.http.get<GetAllItemsType | MessageStatusType>(this.urlGetAllItems + "/" + userId, httpOptions);
   }
 
   updateItemService(

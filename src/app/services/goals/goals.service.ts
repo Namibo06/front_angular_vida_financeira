@@ -42,7 +42,7 @@ export class GoalsService {
     return this.http.post<MessageStatusType>(this.urlCreateGoals, body, httpOptions);
   }
 
-  getAllGoalsService(token: string | null): Observable<GetAllGoalsType>{
+  getAllGoalsService(userId: string | null,token: string | null): Observable<GetAllGoalsType | MessageStatusType>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':'application/json',
@@ -50,7 +50,7 @@ export class GoalsService {
       })
     }
     
-    return this.http.get<GetAllGoalsType>(this.urlGetAllGoals, httpOptions);
+    return this.http.get<GetAllGoalsType | MessageStatusType>(this.urlGetAllGoals+ "/" + userId, httpOptions);
   }
 
   updateStepsGoalsService(

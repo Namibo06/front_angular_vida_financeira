@@ -105,10 +105,14 @@ export class GoalsComponent implements OnInit{
   }
 
   getAllGoals(){
-    this.service.getAllGoalsService(this.token).subscribe({
+    this.service.getAllGoalsService(this.userId,this.token).subscribe({
       next: (res) => {
-        console.log(res);
-        this.allGoals = res;
+        if(Array.isArray(res)){
+          this.allGoals = res;
+        }else{
+          console.log(res.message);
+          console.log(res.status);
+        }
       },
       error: (err) => {
         console.log(err);

@@ -76,26 +76,30 @@ export class LifeFinancialComponent implements OnInit{
   }
 
   getAllItems(){
-    this.service.getAllItemsService(this.token).subscribe({
+    this.service.getAllItemsService(this.userId,this.token).subscribe({
       next: (res) => {
-        console.log(res);
-        this.allItems = res;
+        if(Array.isArray(res)){
+          this.allItems = res;
 
-        res.map((val) => {
-          if(val.operation === "saida"){
-            this.output_value += val.price;
-          }else{
-            this.input_value += val.price;
-          }
-
-          this.total_value = this.input_value - this.output_value;
-
-          if(this.total_value < 0){
-            this.positveOrNegativeTotal = false;
-          }else{
-            this.positveOrNegativeTotal = true;
-          }
-        })
+          res.map((val) => {
+            if(val.operation === "saida"){
+              this.output_value += val.price;
+            }else{
+              this.input_value += val.price;
+            }
+  
+            this.total_value = this.input_value - this.output_value;
+  
+            if(this.total_value < 0){
+              this.positveOrNegativeTotal = false;
+            }else{
+              this.positveOrNegativeTotal = true;
+            }
+          });
+        }else{
+          console.log('Erro de Resposta: ' + res.message);
+          console.log('Erro de Status: ' + res.status);
+        }
       },
       error: (err) => {
         console.log(err);

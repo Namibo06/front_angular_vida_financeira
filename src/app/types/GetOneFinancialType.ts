@@ -5,6 +5,7 @@ export type GetOneFinancialType = {
         email: string,
         token: string | null    
     },
+    _id: string,
     emergency_fund: number,
     variable_income: number,
     fixed_income: number,

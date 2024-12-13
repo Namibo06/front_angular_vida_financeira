@@ -16,38 +16,43 @@
             <form action="" method="post">
                 <table>
                     <thead>
-                        <th>Fundo de Emergência</th>
-                        <th>Investimentos Variáveis</th>
-                        <th>Investimentos Fixos</th>
+                        <th (click)="openModalFinancial('Fundo de Emergência')">Fundo de Emergência</th>
+                        <th (click)="openModalFinancial('Investimentos Variáveis')">Investimentos Variáveis</th>
+                        <th (click)="openModalFinancial('Investimentos Fixos')">Investimentos Fixos</th>
                     </thead>
-
+        
                     <tbody>
-                        <td>R$0.00</td>
-                        <td>R$0.00</td>
-                        <td>R$0.00</td>
+                        <td>R${{emergecyFund}}</td>
+                        <td>R${{variableIncome}}</td>
+                        <td>R${{fixedIncome}}</td>
                     </tbody>
                 </table>
-
-                <!--<div class="camp">
-                    <h3>Fundo de Emergência</h3>
-                    <h3>R$0.00</h3>
-                </div>
-
-                <div class="camp">
-                    <h3>Invest. Variáveis</h3>
-                    <h3>R$0.00</h3>
-                </div>
-                
-                <div class="camp">
-                    <h3>Invest. Fixos</h3>
-                    <h3>R$0.00</h3>
-                </div>-->
             </form>
-
+        
             <div class="camp_total">
                 <h2>Total</h2>
-                <h2>R$0.00</h2>
+                <h2>R${{totalValues}}</h2>
             </div><!--camp-->
-        </div><!--financial__values-->
+        </div><!--financial__values-->        
+
+        <div class="modal_financial" *ngIf="openCloseModalFinancial">
+            <button type="button">
+                <fa-icon [icon]="closeIcon"></fa-icon>
+            </button>
+
+            <h2>Atualizar Valores</h2>
+
+            <form action="" method="post" (submit)="updateFinancial(selectedItem,valueModalUpdate)">
+                <div class="camp">
+                    <input type="text" name="selectedItem" value="{{selectedItem}}">
+                </div><!--camp-->
+
+                <div class="camp">
+                    <input type="text" name="valueModalUpdate" [(ngModel)]="valueModalUpdate">
+                </div><!--camp-->
+
+                <button type="submit">Atualizar</button>
+            </form>
+        </div><!--modal_financial-->
     </main>
 </div><!--financial__container-->
