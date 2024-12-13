@@ -27,142 +27,116 @@
     <main>
         <form action="">
             <div class="goals__wrapper">
-                <div class="goals__single">
+                <div class="goals__single" *ngFor="let goals of allGoals">
+                    <input type="hidden" name="goalsId" [(ngModel)]="goalsId" value="{{goals._id}}">
                     <div class="goals__single__title">
-                        <h3>Comprar Carro</h3>
+                        <h3 (click)="openModalUpdate(goals)">{{goals.title}}</h3>
                     </div><!--goals__single__title-->
 
                     <div class="goals__single__steps">
+                        <!--
+                            fazer o gerenciamento de steps
+                            através dos goals.status
+                        -->
+                            
                         <div class="goals__single__step__one">
-                            <div class="goals__single__step__one__box"></div>
+                            <div class="goals__single__step__one__box" 
+                            (click)="goalsStep(goals._id,'pensando')" 
+                            id="{{goals._id}}-pensando"
+                            [ngClass]="{'completed': goals.number_status >= 1}"
+                            >
+                                <fa-icon [icon]="checkIcon"></fa-icon>
+                            </div>
                             <h4>pensando</h4>
                         </div><!--goals__single__step__one-->
 
                         <div class="goals__single__step__two">
-                            <div class="goals__single__step__two__box"></div>
+                            <div class="goals__single__step__two__box" 
+                                (click)="goalsStep(goals._id,'primeiro_passo')" 
+                                id="{{goals._id}}-primeiro_passo"
+                                [ngClass]="{'completed': goals.number_status >= 2}"
+                            >
+                                <fa-icon [icon]="checkIcon"></fa-icon>
+                            </div>
                             <h4>primeiro passo</h4>
                         </div><!--goals__single__step__two-->
 
                         <div class="goals__single__step__three">
-                            <div class="goals__single__step__three__box"></div>
+                            <div class="goals__single__step__three__box" 
+                                (click)="goalsStep(goals._id,'em_andamento')" 
+                                id="{{goals._id}}-em_andamento"
+                                [ngClass]="{'completed': goals.number_status >= 3}"
+                            >
+                                <fa-icon [icon]="checkIcon"></fa-icon>
+                            </div>
                             <h4>em andamento</h4>
                         </div><!--goals__single__step__three-->
 
                         <div class="goals__single__step__four">
-                            <div class="goals__single__step__four__box"></div>
+                            <div class="goals__single__step__four__box" 
+                                (click)="goalsStep(goals._id,'concluido')" 
+                                id="{{goals._id}}-concluido"
+                                [ngClass]="{'completed': goals.number_status >= 4}"
+                            >
+                                <fa-icon [icon]="checkIcon"></fa-icon>
+                            </div>
                             <h4>concluido</h4>
                         </div><!--goals__single__step__four-->
                     </div><!--goals__single__steps-->
 
                     <div class="goals__single__percent">
-                        <h3>25%</h3>
+                        @if (goals.number_status === 0) {
+                            <h3>0%</h3>
+                        }@else if (goals.number_status === 1) {
+                            <h3>25%</h3>
+                        }@else if (goals.number_status === 2) {
+                            <h3>50%</h3>
+                        }@else if (goals.number_status === 3) {
+                            <h3>75%</h3>
+                        }@else if (goals.number_status === 4) {
+                            <h3>100%</h3>
+                        }
                     </div><!--goals__single__percent-->
                 </div><!--goals__single-->
-
-                <div class="goals__single">
-                    <div class="goals__single__title">
-                        <h3>Comprar Casa</h3>
-                    </div><!--goals__single__title-->
-
-                    <div class="goals__single__steps">
-                        <div class="goals__single__step__one">
-                            <div class="goals__single__step__one__box"></div>
-                            <h4>pensando</h4>
-                        </div><!--goals__single__step__one-->
-
-                        <div class="goals__single__step__two">
-                            <div class="goals__single__step__two__box"></div>
-                            <h4>primeiro passo</h4>
-                        </div><!--goals__single__step__two-->
-
-                        <div class="goals__single__step__three">
-                            <div class="goals__single__step__three__box"></div>
-                            <h4>em andamento</h4>
-                        </div><!--goals__single__step__three-->
-
-                        <div class="goals__single__step__four">
-                            <div class="goals__single__step__four__box"></div>
-                            <h4>concluido</h4>
-                        </div><!--goals__single__step__four-->
-                    </div><!--goals__single__steps-->
-
-                    <div class="goals__single__percent">
-                        <h3>50%</h3>
-                    </div><!--goals__single__percent-->
-                </div><!--goals__single-->
-
-                <div class="goals__single">
-                    <div class="goals__single__title">
-                        <h3>Arranjar Trabalho</h3>
-                    </div><!--goals__single__title-->
-
-                    <div class="goals__single__steps">
-                        <div class="goals__single__step__one">
-                            <div class="goals__single__step__one__box"></div>
-                            <h4>pensando</h4>
-                        </div><!--goals__single__step__one-->
-
-                        <div class="goals__single__step__two">
-                            <div class="goals__single__step__two__box"></div>
-                            <h4>primeiro passo</h4>
-                        </div><!--goals__single__step__two-->
-
-                        <div class="goals__single__step__three">
-                            <div class="goals__single__step__three__box"></div>
-                            <h4>em andamento</h4>
-                        </div><!--goals__single__step__three-->
-
-                        <div class="goals__single__step__four">
-                            <div class="goals__single__step__four__box"></div>
-                            <h4>concluido</h4>
-                        </div><!--goals__single__step__four-->
-                    </div><!--goals__single__steps-->
-
-                    <div class="goals__single__percent">
-                        <h3>75%</h3>
-                    </div><!--goals__single__percent-->
-                </div><!--goals__single-->
-
-                <div class="goals__single">
-                    <div class="goals__single__title">
-                        <h3>Fazer 3 anos de namoro</h3>
-                    </div><!--goals__single__title-->
-
-                    <div class="goals__single__steps">
-                        <div class="goals__single__step__one">
-                            <div class="goals__single__step__one__box"></div>
-                            <h4>pensando</h4>
-                        </div><!--goals__single__step__one-->
-
-                        <div class="goals__single__step__two">
-                            <div class="goals__single__step__two__box"></div>
-                            <h4>primeiro passo</h4>
-                        </div><!--goals__single__step__two-->
-
-                        <div class="goals__single__step__three">
-                            <div class="goals__single__step__three__box"></div>
-                            <h4>em andamento</h4>
-                        </div><!--goals__single__step__three-->
-
-                        <div class="goals__single__step__four">
-                            <div class="goals__single__step__four__box"></div>
-                            <h4>concluido</h4>
-                        </div><!--goals__single__step__four-->
-                    </div><!--goals__single__steps-->
-
-                    <div class="goals__single__percent">
-                        <h3>100%</h3>
-                    </div><!--goals__single__percent-->
-                </div><!--goals__single-->
-
-                <!--
-                    Aqui vou permitir que registre outro single
-                -->
             </div><!--goals__wrapper-->
         </form>
         
-        <form action="" method="post" class="add_new_goal">
-            <button type="button">Adicionar Meta</button>
-        </form>
+        <button type="button" class="add_new_goal" (click)="openModalCreate()">Adicionar Meta</button>
+
+        <div class="modal__create__goals" *ngIf="modalCreate">
+            <button type="button" (click)="closeModalCreate()" class="close__modal__create">
+                <fa-icon [icon]="closeModalIcon"></fa-icon>
+            </button>
+
+            <h2>Criar Meta</h2>
+
+            <form action="" (submit)="createGoals()">
+                <label>Titulo:</label>
+
+                <input type="text" name="title" maxlength="22" [(ngModel)]="title">
+
+                <button type="submit">Criar</button>
+            </form>
+        </div><!--modal__create__goals-->
+
+        <div class="modal__update__goals" *ngIf="openCloseModalUpdate">
+            <button type="button" (click)="closeModalUpdate()" class="close__modal__update">
+                <fa-icon [icon]="closeModalIcon"></fa-icon>
+            </button>
+
+            <h2>Atualize um item</h2>
+
+            <form (submit)="updateTitle()">
+                <div class="camp">
+                    <input type="text" name="title" placeholder="Titulo" [(ngModel)]="selectedItem.title" minlength="4" maxlength="22">
+                </div>
+        
+                <div class="buttons">
+                    <button type="button" (click)="removeGoals(selectedItem._id)">Excluir</button>
+                    <button type="submit">Atualizar</button>
+                </div><!--buttons-->
+                
+            </form>
+        </div><!--modal__update__goals-->
     </main>
 </div><!--goals__container-->

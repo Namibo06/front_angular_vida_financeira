@@ -1,5 +1,9 @@
 @use '../../life_financial/life-financial/header.component.scss' as header;
 
+.completed {
+    background-color: rgb(0,200,200);  /* ou a cor que você preferir */
+}
+
 main{
     @include header.display_flex_column();
 
@@ -19,9 +23,12 @@ main{
 
             .goals__single__title{
                 h3{
+                    position: relative;
+                    z-index: 100;
                     width: 250px; 
                     max-width: 250px; 
                     white-space: nowrap;
+                    cursor: pointer;
                 }
             }
 
@@ -38,8 +45,16 @@ main{
                         width: 30px;
                         height: 30px;
                         border-radius: 3px;
-                        border: 1px solid #333;
+                        border: 1px solid #3333;
                         cursor: pointer;
+                        position: relative;
+
+                        fa-icon{
+                            position: absolute;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            color: #f5f5f5;
+                        }
                     }
 
                     h4{
@@ -63,29 +78,232 @@ main{
         }
     }
 
-    form.add_new_goal{
+    button.add_new_goal{
         margin: 60px auto;
+        color: #f5f5f5;
+        background-color: header.$colorBlueLight;
+        width: 200px;
+        height: 45px;
+        border: 0;
+        border-radius: 7px;
+        font-weight: bold;
+        letter-spacing: 7%;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s ease-in;
 
-        button{
+        &:hover{
+            background-color: header.$colorBlueLightHover;
+        }
+
+        &:active{
+            position: relative;
+            top: 1px;
+        }
+    }
+
+    .modal__create__goals{
+        z-index: 999;
+        background-color: header.$colorBlueLight;
+        width: 300px;
+        max-width: 97%;
+        height: 40%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: flex;
+        flex-direction: column;
+        border-radius: 7px;
+
+        h2{
+            position: relative;
+            top: 60px;
+            text-align: center;
             color: #f5f5f5;
-            background-color: header.$colorBlueLight;
-            width: 200px;
-            height: 45px;
-            border: 0;
-            border-radius: 7px;
-            font-weight: bold;
             letter-spacing: 7%;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s ease-in;
+            font-size: 24px;
+        }
 
-            &:hover{
-                background-color: header.$colorBlueLightHover;
-            }
+        .close__modal__create{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: 0;
+            font-size: 28px;
+            cursor: pointer;
+            color: #f5f5f5;
+            transition: 0.1s ease-in;
 
             &:active{
-                position: relative;
-                top: 1px;
+                top: 21px;
+            }
+        }
+
+        form{
+            position: relative;
+            top: 80px;
+            display: flex;
+            flex-direction: column;
+            padding: 0 20px;
+
+            label{
+                color: #f5f5f5;
+                font-size: 18px;
+                letter-spacing: 7%;
+                padding-bottom: 5px;
+            }
+
+            input{
+                height: 25px;
+                border-radius: 4px;
+                padding: 0 15px;
+                margin-bottom: 20px;
+                outline: 0;
+                border: 1px solid transparent;
+
+                &:focus{
+                    border: 1px solid #333;
+                }
+            }
+
+            button{
+                width: 90px;
+                height: 40px;
+                margin: 0 auto;
+                cursor: pointer;
+                border: 1px solid transparent;
+                background-color: #ffffff;
+                color: header.$colorBlueLight;
+                font-size: 17px;
+                font-weight: bold;
+                letter-spacing: 7%;
+                border-radius: 7px;
+                transition: 0.3s ease-in;
+                cursor: pointer;
+
+                &:hover{
+                    border: 1px solid #ffffff;
+                    background-color: header.$colorBlueLight;
+                    color: #ffffff;
+                }
+
+                &:active{
+                    position: relative;
+                    top: 1px;
+                }
+            }
+        }
+    }
+
+    .modal__update__goals{
+        z-index: 999;
+        background-color: header.$colorBlueLight;
+        width: 300px;
+        max-width: 97%;
+        height: 40%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: flex;
+        flex-direction: column;
+        border-radius: 7px;
+
+        h2{
+            position: relative;
+            top: 60px;
+            text-align: center;
+            color: #f5f5f5;
+            letter-spacing: 4%;
+            font-size: 21px;
+        }
+
+        .close__modal__update{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: 0;
+            font-size: 28px;
+            cursor: pointer;
+            color: #f5f5f5;
+            transition: 0.1s ease-in;
+
+            &:active{
+                top: 21px;
+            }
+        }
+
+        form{
+            position: relative;
+            top: 80px;
+            display: flex;
+            flex-direction: column;
+            padding: 0 20px;
+
+            input{
+                height: 35px;
+                border-radius: 4px;
+                padding: 0 15px;
+                margin: 0 auto 20px auto;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                outline: 0;
+                border: 1px solid transparent;
+
+                &:focus{
+                    border: 1px solid #333;
+                }
+            }
+
+            div.buttons{
+                margin-top: 70px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            
+
+                button{
+                    width: 90px;
+                    height: 40px;
+                    margin: 0 auto;
+                    cursor: pointer;
+                    border: 1px solid transparent;
+                    background-color: #ffffff;
+                    color: header.$colorBlueLight;
+                    font-size: 17px;
+                    font-weight: bold;
+                    letter-spacing: 7%;
+                    border-radius: 7px;
+                    transition: 0.3s ease-in;
+                    cursor: pointer;
+
+                    &:nth-child(1){
+                        border: 1px solid transparent;
+                        background-color: #ffffff;
+                        color: #ff0000;
+
+                        &:hover{
+                            border: 1px solid  #ff0000;
+                            background-color: #ff0000;
+                            color: #ffffff;
+                        }
+                    }
+    
+                    &:hover{
+                        border: 1px solid #ffffff;
+                        background-color: header.$colorBlueLight;
+                        color: #ffffff;
+                    }
+    
+                    &:active{
+                        position: relative;
+                        top: 1px;
+                    }
+                }
             }
         }
     }

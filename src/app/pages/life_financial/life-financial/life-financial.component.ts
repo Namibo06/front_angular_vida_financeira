@@ -39,6 +39,8 @@ export class LifeFinancialComponent implements OnInit{
   closeModalIcon: IconDefinition = faXmark;
   openCloseModal: boolean = false;
 
+  positveOrNegativeTotal: boolean = false;
+
   constructor(
     private readonly service: ItemService
   ){}
@@ -87,6 +89,12 @@ export class LifeFinancialComponent implements OnInit{
           }
 
           this.total_value = this.input_value - this.output_value;
+
+          if(this.total_value < 0){
+            this.positveOrNegativeTotal = false;
+          }else{
+            this.positveOrNegativeTotal = true;
+          }
         })
       },
       error: (err) => {
@@ -130,6 +138,12 @@ export class LifeFinancialComponent implements OnInit{
             }
         
             this.total_value = this.input_value - this.output_value;
+
+            if(this.total_value < 0){
+              this.positveOrNegativeTotal = false;
+            }else{
+              this.positveOrNegativeTotal = true;
+            }
 
             setTimeout(() => {
                 window.location.href = 'vida-financeira';

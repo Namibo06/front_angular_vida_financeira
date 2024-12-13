@@ -34,7 +34,7 @@
 
             <form action="" method="post" (submit)="createItem()">
                 <div class="camp">
-                    <input type="text" name="name" placeholder="Nome" [(ngModel)]="name">
+                    <input type="text" name="name" placeholder="Nome" [(ngModel)]="name" maxlength="22">
                 </div><!--camp-->
                 
                 <div class="camp">
@@ -123,7 +123,9 @@
             <div class="final__single">
                 <div class="final__total__values">
                     <h2>Saldo</h2>
-                    <p>R${{total_value.toFixed(2)}}</p>
+                    <p [ngStyle]="positveOrNegativeTotal ? { 'color': 'rgb(0,200,200)' } : { 'color': '#ff0000' }">
+                        R${{total_value.toFixed(2)}}
+                    </p>
                 </div><!--final__total__values-->
             </div><!--final__single-->
         </div><!--final__wrapper-->
