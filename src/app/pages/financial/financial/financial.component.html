@@ -36,7 +36,7 @@
         </div><!--financial__values-->        
 
         <div class="modal_financial" *ngIf="openCloseModalFinancial">
-            <button type="button">
+            <button type="button" class="closeModal" (click)="closeModalFinancial()">
                 <fa-icon [icon]="closeIcon"></fa-icon>
             </button>
 
@@ -44,7 +44,7 @@
 
             <form action="" method="post" (submit)="updateFinancial(selectedItem,valueModalUpdate)">
                 <div class="camp">
-                    <input type="text" name="selectedItem" value="{{selectedItem}}">
+                    <input type="text" name="selectedItem" value="{{selectedItem}}" disabled>
                 </div><!--camp-->
 
                 <div class="camp">

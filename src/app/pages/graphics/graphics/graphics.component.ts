@@ -3,6 +3,7 @@ import { IconDefinition } from '@fortawesome/angular-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { faChevronCircleLeft, faGear } from '@fortawesome/free-solid-svg-icons';
 import { Chart, ChartType } from 'chart.js/auto';
+import { ItemService } from '../../../services/item/item.service';
 
 @Component({
   selector: 'app-graphics',
@@ -17,11 +18,26 @@ export class GraphicsComponent implements OnInit{
   timeIcon: IconDefinition = faClock;
   configIcon: IconDefinition = faGear;
   hourActual: string = "";
+
+  userId: string | null = "";
+  token: string | null = "";
+
+  startDate: Date | undefined;
+  endDate: Date | undefined;
+
+  constructor(private readonly service: ItemService){}
   
   ngOnInit(): void {
     setInterval(() => {
       this.hourActual = this.getTimeActual();  
     },1000);
+
+    this.getDataLocalStorage();
+  }
+
+  getDataLocalStorage(){
+    this.userId = localStorage.getItem('userIdFinanceiro');
+    this.token = localStorage.getItem('tokenFinanceiro');
   }
   
   getTimeActual(): string{
@@ -37,9 +53,12 @@ export class GraphicsComponent implements OnInit{
       this.chart.destroy();
       this.chart = null; 
     }
+
+    this.startDate = undefined;
+    this.endDate = undefined;
   }
   
-  insertGraphicIntoView(event: string) {
+  insertGraphicIntoView(event: string, totalInputs: number, totalOutputs: number) {
     const selectedValue = event as ChartType; 
     const canvas = document.getElementById('canvas') as HTMLCanvasElement | null;
   
@@ -57,15 +76,15 @@ export class GraphicsComponent implements OnInit{
     }
   
     canvas.style.display = "block";
-  
+
     this.chart = new Chart(canvas, {
       type: selectedValue,
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['Entrada', 'Saída'],
         datasets: [
           {
-            label: '# of Votes',
-            data: [13, 19, 3, 5, 2, 3],
+            label: '# Quantidade',
+            data: [totalInputs,totalOutputs],
             borderWidth: 1,
           },
         ],
@@ -82,7 +101,23 @@ export class GraphicsComponent implements OnInit{
   
   selectGraphicOption() {
     this.showHideGraphics = true; 
-    this.insertGraphicIntoView(this.graphicOption);
+    console.log(this.startDate);
+    console.log(this.endDate);
+
+    this.service.getGraphicsInputAndOutput(
+      this.userId,
+      this.token,
+      this.startDate,
+      this.endDate
+    ).subscribe({
+      next: (res) => {
+
+        this.insertGraphicIntoView(this.graphicOption,res.total_inputs,res.total_outputs);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+
   }
-  
 }

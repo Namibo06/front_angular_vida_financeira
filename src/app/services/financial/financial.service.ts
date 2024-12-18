@@ -59,6 +59,7 @@ export class FinancialService {
   updateFinancialService(
     type: string,
     valueModal: number,
+    totalValues: number,
     financialId: string, 
     userId: string | null,
     token: string | null
@@ -82,6 +83,7 @@ export class FinancialService {
 
     const body = {
       [type]: valueModal,
+      'total': totalValues,
       'user': userId
     };
 

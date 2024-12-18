@@ -61,10 +61,13 @@ export class FinancialComponent implements OnInit{
             window.location.href = "financeiro";
           }, 1000);
         }else{
+          this.financialId = response._id;
           this.emergecyFund = response.emergency_fund;
           this.variableIncome = response.variable_income;
           this.fixedIncome = response.fixed_income;
           this.totalValues = response.total;
+
+          this.totalValues = this.variableIncome + this.emergecyFund + this.fixedIncome;
         }
       },
       error: (err) => {
@@ -99,6 +102,7 @@ export class FinancialComponent implements OnInit{
     this.service.updateFinancialService(
       type,
       valueModal,
+      this.totalValues,
       this.financialId,
       this.userId,
       this.token
@@ -107,7 +111,7 @@ export class FinancialComponent implements OnInit{
         console.log(res);
 
         setTimeout(() => {
-            window.location.href = "financeiro";
+          window.location.href = "financeiro";
         }, 1000);
       },
       error: (err) => {

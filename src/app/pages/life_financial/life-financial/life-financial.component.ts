@@ -64,7 +64,13 @@ export class LifeFinancialComponent implements OnInit{
   }
 
   createItem(){
-    this.service.createItemService(this.name,this.operation,this.price,this.userId,this.token).subscribe({
+    this.service.createItemService(
+      this.name,
+      this.operation,
+      this.price,
+      this.userId,
+      this.token
+    ).subscribe({
       next: (res) => {
         console.log(res);
         window.location.href = "vida-financeira";
@@ -76,7 +82,11 @@ export class LifeFinancialComponent implements OnInit{
   }
 
   getAllItems(){
-    this.service.getAllItemsService(this.userId,this.token).subscribe({
+    this.service.getAllItemsService(
+      this.userId,
+      this.token,
+      this.monthActual
+    ).subscribe({
       next: (res) => {
         if(Array.isArray(res)){
           this.allItems = res;

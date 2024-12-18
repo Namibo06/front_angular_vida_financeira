@@ -5,41 +5,48 @@
 
     <main>
         <div class="reports__options">
-            <select name="reports__options" id="reports__options">
-                <option value="">Escolha um Relatório</option>
-                <option value="">Tudo</option>
-                <option value="">Mensal</option>
-                <option value="">Data Específica</option>
-                <option value="">Quinzenal</option>
-                <option value="">Diário</option>
-            </select>
+            <div class="reports__options__filters">
+                <div class="camp">
+                    <label>De:</label>
+                    <input type="date" name="{{startDate}}" [(ngModel)]="startDate">
+                </div><!--camp-->
+
+                <div class="camp">
+                    <label>Até:</label>
+                    <input type="date" name="{{endDate}}" [(ngModel)]="endDate">
+                </div><!--camp-->
+
+                <select name="{{allINputOrOutput}}" [(ngModel)]="allINputOrOutput" (change)="allINputOrOutput">
+                    <option value="">Tudo</option>
+                    <option value="entrada">Entradas</option>
+                    <option value="saida">Saídas</option>
+                </select>
+            </div><!--reports__options__filters-->
 
             <div class="reports__options__buttons">
-                <button type="button">Limpar</button>
-                <button type="button">Buscar</button>
-                <button type="button">Imprimir</button>
-                <button type="button">Exportar em PDF</button>
-                <button type="button">Exportar em CSV</button>
-                <button type="button">Exportar em Excel</button>
+                <button type="button" (click)="clearFilters()">Limpar</button>
+                <!--<button type="button">Imprimir</button>-->
+                <button type="button" (click)="searchData()">Buscar</button>
+                <button type="button" (click)="downloadPDF()">Gerar PDF</button>
+                <button type="button" (click)="exportToCsv()">Exportar em CSV</button>
+                <button type="button" (click)="exportToExcel()">Exportar em Excel</button>
             </div><!--reports__options__buttons-->
         </div><!--reports__options-->
 
-        <div class="reports__templates">
-            <section class="reports__monthly__template">
+        <div class="reports__templates" *ngIf="templateModal">
+            <table border="1">
+                <thead>
+                    <th>Nome</th>
+                    <th>Operação</th>
+                    <th>Valor</th>
+                </thead>
 
-            </section><!--reports__monthly__template-->
-            
-            <section class="reports__specific__date__template">
-
-            </section><!--reports__specific__date__template-->
-
-            <section class="reports__biweekly__template">
-
-            </section><!--reports__biweekly__template-->
-            
-            <section class="reports__daily__template">
-
-            </section><!--reports__daily__template-->
+                <tbody *ngFor="let item of itemsReports">
+                    <td>{{item.name}}</td>
+                    <td>{{item.operation}}</td>
+                    <td>R${{item.price}}</td>
+                </tbody>
+            </table>
         </div><!--reports__templates-->
     </main>
 </div><!--reports__container-->
